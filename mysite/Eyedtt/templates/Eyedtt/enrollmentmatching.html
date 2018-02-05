@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football Match</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="{% static 'Eyedtt/assets/css/bootstrap.css' %}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{% static 'Eyedtt/assets/css/font-awesome.css' %}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{% static 'Eyedtt/assets/css/custom.css' %}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	<title>매칭글 등록 화면입니다.</title>
+</head>
+<body>
+		<div class="col-md-3">
+             <form action='.' method='POST'>
+                        {% csrf_token %}
+                        <h4>매칭 등록&emsp;&nbsp;&nbsp;<input class="btn btn-default pull-right" type="submit"></h4>
+
+                       
+
+                        <table class="table table-bordered table-hover table-responsive">
+                            
+                            <tbody>
+
+                                <tr>
+                                    <th class="info">남길말</td>
+                                    <td><input type="text" name="newmatching_message" style="width:100%" maxlength="30" id="match_title_set" class="matchtitle-input"></td>
+
+                                </tr>
+ 
+                                <tr>
+                                    <th class="info">경기시간</th>
+
+                                    <td>
+			<form>
+			<input style="width:100%" type="datetime-local" name="newmatching_mtime"/>
+            </form>			
+	                               </td>
+
+                                </tr>
+                                <tr>
+                                    <th class="info">경기장</th>
+                                    <td>	    
+        <select name = "newmatching_gname" id="matchground_set" class="form-control">
+		<option value = ""> 경기장 정보를 가져옵니다.</option>
+        {% for ground in grounds %}
+		<option value = "{{ground.g_name}}">{{ground.g_name}}</option>
+		{% endfor %}
+	    </select>
+		                        </td>
+                                </tr>
+
+                                <tr>
+                                    <th class="info">대관료</td>
+                                    <td>
+	   <input type="number" name = "newmatching_money" style="width:100%" id="ground_pay" min="100" max="1000000" maxlength="8">
+				                    </td>
+
+                                </tr>
+
+		 <tr>
+                                    <th class="info">매칭상태</th>
+                                    <td>	   
+        <select name="newmatching_mstat" id="match_status_set" class="form-control">
+		<option value="">매칭상태</option>
+		<option value="홈" >홈</option>
+		<option value="원정" >원정</option>
+	    </select>
+		                            </td>
+        </tr>
+
+			                 	 <tr>
+                                 
+                                    
+                                </tr>
+	                       	    <tr>
+                                 
+                                    
+                                </tr>
+
+                            </tbody>
+                        </table>
+</form>
+                    </div>
+
+
+ 
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="{% static 'Eyedtt/assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'Eyedtt/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'Eyedtt/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'Eyedtt/assets/js/custom.js' %}"></script>
+    
+   
+</body>
+</html>
